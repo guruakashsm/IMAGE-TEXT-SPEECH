@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IMAGE-SPEECH</title>
+    <link rel="icon" type="image/jpg" href="templates\icon.jpg"> <!-- Added title icon -->
+    <style>
+        /* Set the background color to dark black */
+        body {
+            background-color: #000; /* Dark black background color */
+            color: #fff; /* Text color */
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif; /* Use a sans-serif font */
+        }
+        h1, form {
+            text-align: center;
+        }
+        form {
+            background-color: #333; /* Dark gray background for the form */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a card-like effect */
+        }
+        h1 {
+            color: #337ab7; /* Blue title color */
+        }
+        input[type="file"] {
+            border: 2px solid #337ab7; /* Blue border for the file input */
+            border-radius: 5px;
+            padding: 10px;
+            font-size: 16px;
+            background-color: #f0f0f0; /* Light gray background for the input */
+            color: #333; /* Dark gray text color for the input */
+        }
+        .live-input-image {
+            max-width: 100%;
+            max-height: 400px; /* You can adjust the max height as needed */
+            margin-top: 20px;
+        }
+        input[type="submit"] {
+            background-color: #337ab7; /* Blue background for the submit button */
+            color: #fff;
+            padding: 12px 20px;
+            border: none;
+            cursor: pointer;
+            margin-top: 10px;
+            border-radius: 5px;
+            font-weight: bold; /* Bold text for the button */
+        }
+        #signup-button {
+            background-color: #337ab7;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 25px;
+            font-weight: bold;
+            margin: 10px; /* Add some space between buttons */
+            position: absolute;
+            top: 10px; /* Position at the top */
+            right: 200px; /* Position at the right */
+            
+        }
+        #signin-button{
+            background-color: #337ab7;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 25px;
+            font-weight: bold;
+            margin: 10px; /* Add some space between buttons */
+            position: absolute;
+            top: 10px; /* Position at the top */
+            right: 100px; /* Position at the right */
+        } 
+
+        input[type="submit"]:hover {
+            background-color: #286090; /* Darker blue on hover */
+        }
+        .logo {
+            max-width: 200px; /* Set the maximum width for the logo */
+        }
+        /* Stylish Tamil text */
+        .stylish-tamil {
+            font-size: 48px; /* Larger font size */
+            font-weight: bold; /* Bold text */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Different font family */
+            color: #ff69b4; /* Custom text color (pink) */
+        }
+        /* Drag and Drop area */
+        .drag-drop-area {
+            border: 2px dashed #337ab7; /* Dashed blue border for the drag and drop area */
+            padding: 20px;
+            margin-top: 20px;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .drag-drop-area p {
+            margin: 0;
+        }
+        /* Align labels and radio buttons horizontally */
+        .language-label {
+            display: inline-block;
+            margin-right: 10px;
+        }
+        .language-radio {
+            display: inline-block;
+        }
+        /* Style for the signup and signin forms */
+        .auth-form {
+        display: none;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        background-color: #333; /* Dark gray background for the form */
+        padding: 20px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a card-like effect */
+        width: 300px; /* Set the width of the form */
+        text-align: left; /* Align form content to the left */
+    }
+    .auth-form label {
+        display: block;
+        margin-bottom: 10px;
+        color: #fff; /* Label text color */
+    }
+    .auth-form input[type="text"],
+    .auth-form input[type="password"],
+    .auth-form input[type="email"] {
+        width: 90%; /* Full width for input fields */
+        padding: 10px;
+        border: 2px solid #337ab7;
+        border-radius: 7px;
+        background-color: #f0f0f0;
+        color: #333;
+        margin-bottom: 10px;
+    }
+    .auth-form input[type="button"] {
+        background-color: #337ab7;
+        color: #fff;
+        padding: 10px 20px;
+        border: none;
+        cursor: pointer;
+        border-radius: 5px;
+        font-weight: bold;
+        float: right; /* Float the button to the right */
+    }
+    .auth-form input[type="button"]:hover {
+        background-color: #286090;
+    }
+    .auth-form p {
+        text-align: center; /* Center-align the "Don't have an account?" link */
+        margin-top: 10px;
+    }
+    </style>
+</head>
+<body>
+    <button id="signin-button" onclick="showSignInForm()">Sign In</button>
+    <button id="signup-button" onclick="showSignUpForm()">Sign Up</button>
+
+    <!-- Signup form initially hidden -->
+    <form class="auth-form" id="signup-form">
+        <h1>Signup</h1>
+        <label for="signup-username">Username:</label>
+        <input type="text" id="signup-username" name="signup-username" required>
+        <label for="signup-email">Email:</label>
+        <input type="email" id="signup-email" name="signup-email" required>
+        <label for="signup-password">Password:</label>
+        <input type="password" id="signup-password" name="signup-password" required>
+        <input type="button" value="Submit" onclick="signUp()">
+    </form>
+
+    <!-- Signin form initially hidden -->
+    <form class="auth-form" id="signin-form">
+        <h1>Login</h1>
+        <label for="username">Username:</label>
+        <input type="text" id="username" name="username" required>
+        <label for="password">Password:</label>
+        <input type="password" id="password" name="password" required>
+        <input type="button" value="Sign In" onclick="signIn()">
+    </form>
+
+    <div id="content" style="display: block;">
+        <h1>IMAGE TO SPEECH</h1>
+        <form action="/process" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+            <input type="file" name="image" accept=".png, .jpg, .jpeg">
+            <h3 style="padding-right: 70%;">Language:</h3>        
+            <!-- Language Selection Radio Buttons -->
+            <label class="language-label" for="tamil">Tamil</label>
+            <input class="language-radio" type="radio" id="tamil" name="language" value="ta">
+            <label class="language-label" for="english">English</label>
+            <input class="language-radio" type="radio" id="english" name="language" value="en" checked>
+            <label class="language-label" for="hindi">Hindi</label>
+            <input class="language-radio" type="radio" id="hindi" name="language" value="hi">
+            <br>
+            <br>
+            <input type="submit" value="Convert">
+        </form>
+        <div class="drag-drop-area" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
+            <p>Drag and drop files here to upload</p>
+        </div>
+    </div>
+    <script>
+         function showSignInForm() {
+            // Hide the "Sign In" button and content
+            document.getElementById('signin-button').style.display = 'none';
+            document.getElementById('content').style.display = 'none';
+
+            // Show the sign-in form
+            document.getElementById('signin-form').style.display = 'block';
+
+
+            document.getElementById('username').value = '';
+            document.getElementById('password').value = '';
+        }
+
+        // Function to handle sign-in
+        function signIn() {
+            // Get the username and password from the form
+            var username = document.getElementById('username').value;
+            var password = document.getElementById('password').value;
+
+            // Define the data structure
+            var data = {
+                email: username,
+                password: password
+            };
+
+            // Convert the data to JSON
+            var jsonData = JSON.stringify(data);
+
+            // Make an HTTP POST request to the backend for sign-in
+            fetch('http://localhost:8080/signin', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: jsonData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data === 1) {
+                    // Sign-in was successful, you can handle this accordingly
+                    alert("Sign-in successful.");
+                    // Now, you can display the content or take further actions
+                    document.getElementById('username').value = '';
+                    document.getElementById('password').value = '';
+                    document.getElementById('signin-button').style.display = 'none';
+                    document.getElementById('signup-button').style.display = 'none';
+                    showContent();
+                } else {
+                    // Sign-in failed, handle it accordingly (e.g., show an error message)
+                    alert("Sign-in failed. Please check your credentials.");
+                    document.getElementById('username').value = '';
+                    document.getElementById('password').value = '';
+                    document.getElementById('signin-form').style.display = 'none';
+                    document.getElementById('signin-button').style.display = 'block';
+                    document.getElementById('signup-form').style.display = 'none';
+                    document.getElementById('content').style.display = 'block';
+                    
+                }
+            })
+            .catch(error => {
+                console.error('Network error:', error);
+            });
+        }
+
+        // Function to show the content after successful sign-in
+        function showContent() {
+            // Display the entire content
+            document.getElementById('content').style.display = 'block';
+
+            // Hide the sign-in form
+            document.getElementById('signin-form').style.display = 'none';
+        }
+
+        function showSignUpForm() {
+            // Hide the "Sign Up" button and content
+            document.getElementById('signup-button').style.display = 'none';
+            document.getElementById('content').style.display = 'none';
+
+            // Show the signup form
+            document.getElementById('signup-form').style.display = 'block';
+
+            // Clear the signup form fields
+            document.getElementById('signup-username').value = '';
+            document.getElementById('signup-phone').value = '';
+            document.getElementById('signup-email').value = '';
+            document.getElementById('signup-password').value = '';
+        }
+
+        // Function to handle signup
+        function signUp() {
+            // Get the signup form field values
+            var signupUsername = document.getElementById('signup-username').value;
+            var signupEmail = document.getElementById('signup-email').value;
+            var signupPassword = document.getElementById('signup-password').value;
+
+            // Define the signup data structure
+            var signupData = {
+                username: signupUsername,
+                email: signupEmail,
+                password: signupPassword
+            };
+
+            // Convert the data to JSON
+            var jsonData = JSON.stringify(signupData);
+
+            // Make an HTTP POST request to the backend for signup
+            fetch('http://localhost:8080/signup', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: jsonData
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data === 1) {
+                    // Signup was successful, you can handle this accordingly
+                    alert("Signup successful.");
+                    // You may want to redirect or show a success message
+                } else {
+                    // Signup failed, handle it accordingly (e.g., show an error message)
+                    alert("Signup failed. Please check your input.");
+                }
+            })
+            .catch(error => {
+                console.error('Network error:', error);
+            });
+        }
+
+
+    </script>
+</body>
+</html>
