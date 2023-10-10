@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,51 +9,72 @@
     <style>
         /* Set the background color to dark black */
         body {
-            background-color: #000; /* Dark black background color */
-            color: #fff; /* Text color */
+            background-color: #000;
+            /* Dark black background color */
+            color: #fff;
+            /* Text color */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
             min-height: 100vh;
             margin: 0;
-            font-family: Arial, sans-serif; /* Use a sans-serif font */
+            font-family: Arial, sans-serif;
+            /* Use a sans-serif font */
         }
-        h1, form {
+
+        h1,
+        form {
             text-align: center;
         }
+
         form {
-            background-color: #333; /* Dark gray background for the form */
+            background-color: #333;
+            /* Dark gray background for the form */
             padding: 20px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a card-like effect */
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Box shadow for a card-like effect */
         }
+
+
         h1 {
-            color: #337ab7; /* Blue title color */
+            color: #337ab7;
+            /* Blue title color */
         }
+
         input[type="file"] {
-            border: 2px solid #337ab7; /* Blue border for the file input */
+            border: 2px solid #337ab7;
+            /* Blue border for the file input */
             border-radius: 5px;
             padding: 10px;
             font-size: 16px;
-            background-color: #f0f0f0; /* Light gray background for the input */
-            color: #333; /* Dark gray text color for the input */
+            background-color: #f0f0f0;
+            /* Light gray background for the input */
+            color: #333;
+            /* Dark gray text color for the input */
         }
+
         .live-input-image {
             max-width: 100%;
-            max-height: 400px; /* You can adjust the max height as needed */
+            max-height: 400px;
+            /* You can adjust the max height as needed */
             margin-top: 20px;
         }
+
         input[type="submit"] {
-            background-color: #337ab7; /* Blue background for the submit button */
+            background-color: #337ab7;
+            /* Blue background for the submit button */
             color: #fff;
             padding: 12px 20px;
             border: none;
             cursor: pointer;
             margin-top: 10px;
             border-radius: 5px;
-            font-weight: bold; /* Bold text for the button */
+            font-weight: bold;
+            /* Bold text for the button */
         }
+
         #signup-button {
             background-color: #337ab7;
             color: #fff;
@@ -61,13 +83,17 @@
             cursor: pointer;
             border-radius: 25px;
             font-weight: bold;
-            margin: 10px; /* Add some space between buttons */
+            margin: 10px;
+            /* Add some space between buttons */
             position: absolute;
-            top: 10px; /* Position at the top */
-            right: 200px; /* Position at the right */
-            
+            top: 10px;
+            /* Position at the top */
+            right: 200px;
+            /* Position at the right */
+
         }
-        #signin-button{
+
+        #signin-button {
             background-color: #337ab7;
             color: #fff;
             padding: 10px 20px;
@@ -75,100 +101,161 @@
             cursor: pointer;
             border-radius: 25px;
             font-weight: bold;
-            margin: 10px; /* Add some space between buttons */
+            margin: 10px;
+            /* Add some space between buttons */
             position: absolute;
-            top: 10px; /* Position at the top */
-            right: 100px; /* Position at the right */
-        } 
+            top: 10px;
+            /* Position at the top */
+            right: 100px;
+            /* Position at the right */
+        }
 
         input[type="submit"]:hover {
-            background-color: #286090; /* Darker blue on hover */
+            background-color: #286090;
+            /* Darker blue on hover */
         }
+
         .logo {
-            max-width: 200px; /* Set the maximum width for the logo */
+            max-width: 200px;
+            /* Set the maximum width for the logo */
         }
+
         /* Stylish Tamil text */
         .stylish-tamil {
-            font-size: 48px; /* Larger font size */
-            font-weight: bold; /* Bold text */
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif; /* Different font family */
-            color: #ff69b4; /* Custom text color (pink) */
+            font-size: 48px;
+            /* Larger font size */
+            font-weight: bold;
+            /* Bold text */
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            /* Different font family */
+            color: #ff69b4;
+            /* Custom text color (pink) */
         }
+
         /* Drag and Drop area */
         .drag-drop-area {
-            border: 2px dashed #337ab7; /* Dashed blue border for the drag and drop area */
+            border: 2px dashed #337ab7;
+            /* Dashed blue border for the drag and drop area */
             padding: 20px;
             margin-top: 20px;
             border-radius: 5px;
             text-align: center;
         }
+
         .drag-drop-area p {
             margin: 0;
         }
+
         /* Align labels and radio buttons horizontally */
         .language-label {
             display: inline-block;
             margin-right: 10px;
         }
+
         .language-radio {
             display: inline-block;
         }
+
         /* Style for the signup and signin forms */
         .auth-form {
-        display: none;
-        position: fixed;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        background-color: #333; /* Dark gray background for the form */
-        padding: 20px;
-        border-radius: 10px;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* Box shadow for a card-like effect */
-        width: 300px; /* Set the width of the form */
-        text-align: left; /* Align form content to the left */
-    }
-    .auth-form label {
-        display: block;
-        margin-bottom: 10px;
-        color: #fff; /* Label text color */
-    }
-    .auth-form input[type="text"],
-    .auth-form input[type="password"],
-    .auth-form input[type="email"] {
-        width: 90%; /* Full width for input fields */
-        padding: 10px;
-        border: 2px solid #337ab7;
-        border-radius: 7px;
-        background-color: #f0f0f0;
-        color: #333;
-        margin-bottom: 10px;
-    }
-    .auth-form input[type="button"] {
-        background-color: #337ab7;
-        color: #fff;
-        padding: 10px 20px;
-        border: none;
-        cursor: pointer;
-        border-radius: 5px;
-        font-weight: bold;
-        float: right; /* Float the button to the right */
-    }
-    .auth-form input[type="button"]:hover {
-        background-color: #286090;
-    }
-    .auth-form p {
-        text-align: center; /* Center-align the "Don't have an account?" link */
-        margin-top: 10px;
-    }
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: #333;
+            /* Dark gray background for the form */
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            /* Box shadow for a card-like effect */
+            width: 300px;
+            /* Set the width of the form */
+            text-align: left;
+            /* Align form content to the left */
+        }
+
+        .auth-form label {
+            display: block;
+            margin-bottom: 10px;
+            color: #fff;
+            /* Label text color */
+        }
+
+        .auth-form input[type="text"],
+        .auth-form input[type="password"],
+        .auth-form input[type="email"] {
+            width: 90%;
+            /* Full width for input fields */
+            padding: 10px;
+            border: 2px solid #337ab7;
+            border-radius: 7px;
+            background-color: #f0f0f0;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .auth-form input[type="button"] {
+            background-color: #337ab7;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-weight: bold;
+            float: right;
+            /* Float the button to the right */
+        }
+
+        .text-box {
+            width: 63%;
+            padding: 10px;
+            border: 2px solid #337ab7;
+            border-radius: 7px;
+            background-color: #f0f0f0;
+            color: #333;
+            margin-bottom: 10px;
+            font-size: 16px;
+            /* You can adjust the font size as needed */
+            height: 20%;
+        }
+
+        .auth-form input[type="button"]:hover {
+            background-color: #286090;
+        }
+
+        .auth-form p {
+            text-align: center;
+            /* Center-align the "Don't have an account?" link */
+            margin-top: 10px;
+        }
+
+        .home-symbol {
+            position: absolute;
+            top: 7;
+            left: 10;
+            cursor: pointer;
+            size: 3cm;
+        }
+
+        .home-symbol p {
+            font-size: 27px;
+        }
     </style>
 </head>
+
 <body>
     <button id="signin-button" onclick="showSignInForm()">Sign In</button>
     <button id="signup-button" onclick="showSignUpForm()">Sign Up</button>
 
     <!-- Signup form initially hidden -->
     <form class="auth-form" id="signup-form">
+
+        <div class="home-symbol" onclick="location.reload()">
+            <p> 🏠</p>
+        </div>
         <h1>Signup</h1>
+
         <label for="signup-username">Username:</label>
         <input type="text" id="signup-username" name="signup-username" required>
         <label for="signup-email">Email:</label>
@@ -180,7 +267,11 @@
 
     <!-- Signin form initially hidden -->
     <form class="auth-form" id="signin-form">
+        <div class="home-symbol" onclick="location.reload()">
+            <p> 🏠</p>
+        </div>
         <h1>Login</h1>
+
         <label for="username">Username:</label>
         <input type="text" id="username" name="username" required>
         <label for="password">Password:</label>
@@ -188,28 +279,35 @@
         <input type="button" value="Sign In" onclick="signIn()">
     </form>
 
-    <div id="content" style="display: block;">
-        <h1>IMAGE TO SPEECH</h1>
-        <form action="/process" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
-            <input type="file" name="image" accept=".png, .jpg, .jpeg">
-            <h3 style="padding-right: 70%;">Language:</h3>        
-            <!-- Language Selection Radio Buttons -->
-            <label class="language-label" for="tamil">Tamil</label>
-            <input class="language-radio" type="radio" id="tamil" name="language" value="ta">
-            <label class="language-label" for="english">English</label>
-            <input class="language-radio" type="radio" id="english" name="language" value="en" checked>
-            <label class="language-label" for="hindi">Hindi</label>
-            <input class="language-radio" type="radio" id="hindi" name="language" value="hi">
-            <br>
-            <br>
-            <input type="submit" value="Convert">
-        </form>
-        <div class="drag-drop-area" ondrop="handleDrop(event)" ondragover="handleDragOver(event)" ondragleave="handleDragLeave(event)">
-            <p>Drag and drop files here to upload</p>
-        </div>
+    <form id="content" action="/process" method="POST" enctype="multipart/form-data" onsubmit="return validateForm()">
+        <h1>SPEECH FORM IMAGE & TEXT</h1>
+        <input type="file" name="image" accept=".png, .jpg, .jpeg">
+        <br>
+        <br>
+        <!-- Input field for user-provided text -->
+        <textarea class="text-box" name="user_text" rows="4" cols="50" placeholder="Enter text..."></textarea>
+        <br>
+
+        <h3 style="padding-right: 70%;">Language:</h3>
+        <!-- Language Selection Radio Buttons -->
+        <label class="language-label" for="tamil">Tamil</label>
+        <input class="language-radio" type="radio" id="tamil" name="language" value="ta">
+        <label class="language-label" for="english">English</label>
+        <input class="language-radio" type="radio" id="english" name="language" value="en" checked>
+        <label class="language-label" for="hindi">Hindi</label>
+        <input class="language-radio" type="radio" id="hindi" name="language" value="hi">
+        <br>
+        <br>
+        <input type="submit" value="Convert">
+    </form>
+
+    <div class="drag-drop-area" ondrop="handleDrop(event)" ondragover="handleDragOver(event)"
+        ondragleave="handleDragLeave(event)">
+        <p>Drag and drop files here to upload</p>
+    </div>
     </div>
     <script>
-         function showSignInForm() {
+        function showSignInForm() {
             // Hide the "Sign In" button and content
             document.getElementById('signin-button').style.display = 'none';
             document.getElementById('content').style.display = 'none';
@@ -245,32 +343,32 @@
                 },
                 body: jsonData
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data === 1) {
-                    // Sign-in was successful, you can handle this accordingly
-                    alert("Sign-in successful.");
-                    // Now, you can display the content or take further actions
-                    document.getElementById('username').value = '';
-                    document.getElementById('password').value = '';
-                    document.getElementById('signin-button').style.display = 'none';
-                    document.getElementById('signup-button').style.display = 'none';
-                    showContent();
-                } else {
-                    // Sign-in failed, handle it accordingly (e.g., show an error message)
-                    alert("Sign-in failed. Please check your credentials.");
-                    document.getElementById('username').value = '';
-                    document.getElementById('password').value = '';
-                    document.getElementById('signin-form').style.display = 'none';
-                    document.getElementById('signin-button').style.display = 'block';
-                    document.getElementById('signup-form').style.display = 'none';
-                    document.getElementById('content').style.display = 'block';
-                    
-                }
-            })
-            .catch(error => {
-                console.error('Network error:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    if (data === 1) {
+                        // Sign-in was successful, you can handle this accordingly
+                        alert("Sign-in successful.");
+                        // Now, you can display the content or take further actions
+                        document.getElementById('username').value = '';
+                        document.getElementById('password').value = '';
+                        document.getElementById('signin-button').style.display = 'none';
+                        document.getElementById('signup-button').style.display = 'none';
+                        showContent();
+                    } else {
+                        // Sign-in failed, handle it accordingly (e.g., show an error message)
+                        alert("Sign-in failed. Please check your credentials.");
+                        document.getElementById('username').value = '';
+                        document.getElementById('password').value = '';
+                        document.getElementById('signin-form').style.display = 'none';
+                        document.getElementById('signin-button').style.display = 'block';
+                        document.getElementById('signup-form').style.display = 'none';
+                        document.getElementById('content').style.display = 'block';
+
+                    }
+                })
+                .catch(error => {
+                    console.error('Network error:', error);
+                });
         }
 
         // Function to show the content after successful sign-in
@@ -289,6 +387,7 @@
 
             // Show the signup form
             document.getElementById('signup-form').style.display = 'block';
+            document.getElementById('signin-form').style.display = 'none';
 
             // Clear the signup form fields
             document.getElementById('signup-username').value = '';
@@ -322,23 +421,42 @@
                 },
                 body: jsonData
             })
-            .then(response => response.json())
-            .then(data => {
-                if (data === 1) {
-                    // Signup was successful, you can handle this accordingly
-                    alert("Signup successful.");
-                    // You may want to redirect or show a success message
-                } else {
-                    // Signup failed, handle it accordingly (e.g., show an error message)
-                    alert("Signup failed. Please check your input.");
-                }
-            })
-            .catch(error => {
-                console.error('Network error:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    if (data === 1) {
+                        // Signup was successful, you can handle this accordingly
+                        alert("Signup successful.");
+                        // You may want to redirect or show a success message
+                    } else {
+                        // Signup failed, handle it accordingly (e.g., show an error message)
+                        alert("Signup failed. Please check your input.");
+                    }
+                })
+                .catch(error => {
+                    console.error('Network error:', error);
+                });
+        }
+
+        function validateForm() {
+            const imageInput = document.querySelector('input[type="file"]');
+            const textInput = document.querySelector('textarea[name="user_text"]');
+
+            if (imageInput.files.length > 0 && textInput.value.trim() !== '') {
+                alert("Please choose either an image or text, not both.");
+                document.querySelector('input[type="file"]').value = '';
+                document.querySelector('textarea[name="user_text"]').value = '';
+                return false; // Prevent form submission
+            }
+
+            return true; // Allow form submission
+        }
+
+        function reloadPage() {
+            location.reload();
         }
 
 
     </script>
 </body>
+
 </html>
