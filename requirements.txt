@@ -1,5 +1,5 @@
-Flask==2.1.1
-Werkzeug==2.0.3
+Flask==3.0.0
+Werkzeug==3.0.0
 Pillow==9.0.0
 googletrans==4.0.0-rc1
 gtts==2.2.3
