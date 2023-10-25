@@ -1,5 +1,5 @@
 flask==3.0.0
-werkzeug==3.0.1
+werkzeug.urls==3.0.1
 pillow==9.0.0
 googletrans==4.0.0-rc1
 gtts==2.2.3
