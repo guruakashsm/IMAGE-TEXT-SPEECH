@@ -1,6 +1,6 @@
-flask==3.0.0
-werkzeug.urls==3.0.1
-pillow==9.0.0
+Flask==2.1.1
+Werkzeug==2.0.3
+Pillow==9.0.0
 googletrans==4.0.0-rc1
 gtts==2.2.3
 pytesseract==0.3.9
